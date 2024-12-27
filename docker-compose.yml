@@ -1,5 +1,5 @@
 networks:
-  web:
+  host:
     external: true
   internal:
     external: false
@@ -14,7 +14,7 @@ services:
       - "80:80"
       - "443:443"
     networks:
-      - web
+      - host
       - internal
   portainer:
     image: portainer/portainer-ce:latest
