@@ -9,13 +9,12 @@ networks:
 
 services:
   caddy:
-    image: caddy:2-alpine
+    build: ./caddy
+    pull_policy: build
     restart: unless-stopped
     ports:
       - "80:80"
       - "443:443"
-    volumes:
-      - /data/caddy/Caddyfile:/etc/caddy/Caddyfile
     networks:
       - web
       - internal
