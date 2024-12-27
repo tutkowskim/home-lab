@@ -1,3 +1,23 @@
+version: "3.9"
+
+networks:
+  web:
+    external: true
+  internal:
+    external: false
+    driver: bridge
+
 services:
-  hello_world:
-    image: hello-world
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /data/caddy/Caddyfile:/etc/caddy/Caddyfile
+    networks:
+      - web
+      - internal
+  portainer:
+    image: portainer/portainer-ce:latest

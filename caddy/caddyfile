@@ -1,0 +1,10 @@
+*.homelab.tutkowski.com {
+    @portainer host portainer.homelab.tutkowski.com
+    handle @portainer {
+        encode zstd gzip
+        reverse_proxy http://portainer:9000
+    }
+    handle {
+        abort
+    }
+}
